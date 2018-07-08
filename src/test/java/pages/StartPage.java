@@ -3,9 +3,9 @@ package pages;
 import org.openqa.selenium.WebDriver;
 
 public class StartPage {
-	
-	
+
 	public WebDriver driver;
+
 	public StartPage(WebDriver driver) {
 		this.driver = driver;
 	}

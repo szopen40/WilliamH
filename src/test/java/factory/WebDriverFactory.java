@@ -1,10 +1,11 @@
-package pages;
+package factory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -37,12 +38,27 @@ public class WebDriverFactory {
 			}
 			break;
 		case "Chrome":
+			System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
 			driver = drivers.get("Chrome");
 			if (driver == null) {
 				driver = new ChromeDriver();
 				drivers.put("Chrome", driver);
 			}
 			break;
+		
+		case "Mobile":
+			System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
+			Map<String, Object> deviceMetrics = new HashMap<>();
+			deviceMetrics.put("width", 360);
+			deviceMetrics.put("height", 640);
+			deviceMetrics.put("pixelRatio", 3.0);
+
+			Map<String, Object> mobileEmulation = new HashMap<>();
+			mobileEmulation.put("deviceMetrics", deviceMetrics);
+			mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19");
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+			driver = new ChromeDriver(chromeOptions);
 		}
 		return driver;
 	}

@@ -6,9 +6,11 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "feature", 
-glue = {"stepdefs"}
-)
+@CucumberOptions(
+		features = "src/test/resources/feature", 
+		glue = { "stepdefs" }, 
+		plugin = {"html:target/cucumber-html-report", "json:target/cucumber.json"}
+		)
 public class TestRunner {
 
 }
