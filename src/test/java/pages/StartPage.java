@@ -1,17 +1,20 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class StartPage {
+import factory.WebDriverFactory;
 
-	public WebDriver driver;
+public class StartPage extends WebDriverFactory {
+
+	WebDriver driver = WebDriverFactory.getBrowser("Chrome");
+	public WebDriverWait wait = new WebDriverWait(driver, 5);
 
 	public StartPage(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	public HomePage goToHomePage() {
-		driver.manage().window().maximize();
 		driver.get("https://vegas.williamhill.com/");
 		return new HomePage(driver);
 	}

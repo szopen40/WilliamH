@@ -2,6 +2,7 @@ package factory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +27,8 @@ public class WebDriverFactory {
 				System.setProperty("webdriver.gecko.driver",
 						"D:\\Selenium\\geckodriver.exe");
 				driver = new FirefoxDriver();
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				drivers.put("Firefox", driver);
 			}
 			break;
@@ -42,6 +45,8 @@ public class WebDriverFactory {
 			driver = drivers.get("Chrome");
 			if (driver == null) {
 				driver = new ChromeDriver();
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				drivers.put("Chrome", driver);
 			}
 			break;
