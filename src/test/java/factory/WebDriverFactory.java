@@ -42,7 +42,7 @@ public class WebDriverFactory {
 		case "IE":
 			driver = drivers.get("IE");
 			if (driver == null) {
-				System.setProperty("webdriver.ie.driver", "C:\\Users\\abc\\Desktop\\Server\\IEDriverServer.exe");
+				System.setProperty("webdriver.ie.driver", ConfigReader.readProperties("IE"));
 				driver = new InternetExplorerDriver();
 				//ngDriver = new NgWebDriver((JavascriptExecutor) driver);
 				//ngDriver.waitForAngularRequestsToFinish();
@@ -63,7 +63,7 @@ public class WebDriverFactory {
 			break;
 		
 		case "Mobile":
-			System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", ConfigReader.readProperties("mobile"));
 			Map<String, Object> deviceMetrics = new HashMap<>();
 			deviceMetrics.put("width", 360);
 			deviceMetrics.put("height", 640);

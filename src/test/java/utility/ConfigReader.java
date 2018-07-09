@@ -23,9 +23,16 @@ public class ConfigReader {
 			return firefoxPath;
 		}
 		if(name == "geckoPath"){
-			String geckoPath = prop.getProperty("geckoPath");
-			
+			String geckoPath = prop.getProperty("geckoPath");			
 			return geckoPath;
+		}
+		if(name == "mobile"){
+			String mobile = prop.getProperty("mobile");			
+			return mobile;
+		}
+		if(name == "IE"){
+			String IE = prop.getProperty("IE");			
+			return IE;
 		}
 		
 		return null;
