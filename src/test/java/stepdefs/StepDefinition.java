@@ -12,11 +12,11 @@ import factory.WebDriverFactory;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.SearchPage;
-import pages.StartPage;
+import pages.BasePage;
 
 public class StepDefinition {
 
-	StartPage start_page;
+	BasePage start_page;
 	HomePage home_page;
 	SearchPage search_page;
 	LoginPage login;

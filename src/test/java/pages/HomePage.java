@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends StartPage {
+public class HomePage extends BasePage {
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -14,6 +14,11 @@ public class HomePage extends StartPage {
 	private By searchField = By.cssSelector(".search-input__input-wrapper input");
 	
 	private String game_name = "Mayfair Roulette";
+	
+	public HomePage goToHomePage() {
+		driver.get("https://vegas.williamhill.com/");
+		return new HomePage(driver);
+	}
 
 	public SearchPage clickAndSearch() {
 		

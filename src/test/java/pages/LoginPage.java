@@ -41,17 +41,12 @@ public class LoginPage extends SearchPage {
 	private By close_button = By.xpath("//span[text() = 'Close']");
 
 	public boolean usernameEnabled() {
-		if (driver.findElement(username_field).isEnabled() && driver.findElement(username_title).isDisplayed()) {
-			return true;
-		} else
-			return false;
+		return (driver.findElement(username_field).isEnabled() && driver.findElement(username_title).isDisplayed()); 
 	}
 
 	public boolean passwordEnabled() {
-		if (driver.findElement(password_field).isEnabled() && driver.findElement(password_title).isDisplayed()) {
-			return true;
-		} else
-			return false;
+		return (driver.findElement(password_field).isEnabled() && driver.findElement(password_title).isDisplayed());
+
 	}
 
 	public boolean hideAndShowEnabled() {

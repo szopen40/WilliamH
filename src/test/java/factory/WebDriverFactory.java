@@ -11,10 +11,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import com.paulhammant.ngwebdriver.*;
+import utility.ConfigReader;
+
 
 public class WebDriverFactory {
 	private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 	private static NgWebDriver ngDriver;
+	ConfigReader config = new ConfigReader();
 
 	/*
 	 * Factory method for getting browsers
@@ -48,7 +51,7 @@ public class WebDriverFactory {
 			}
 			break;
 		case "Chrome":
-			System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver1_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", ConfigReader.getChromePath());
 			driver = drivers.get("Chrome");
 			if (driver == null) {
 				driver = new ChromeDriver();
