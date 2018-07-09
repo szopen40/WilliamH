@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -92,7 +93,7 @@ public class StepDefinition {
 	
 	@Then("^The Customer is able to see Log in button$")
 	public void the_Customer_is_able_to_see_Log_in_button() {
-		assertTrue("Login is displayed", login.loginButtonVerification());
+		assertTrue("Login is displayed", login.loginButtonDisplayed());
 
 	}
 	
@@ -100,9 +101,10 @@ public class StepDefinition {
 	public void the_Customer_is_able_to_see_Save_username_checkbox()  {
 		assertTrue("Checkbox is enabled and 'save username' displayer", login.checkboxEnabled());
 	}
-	/*@After("@tag1")
+	@After("@tag1")
     public void afterScenario(){
-        WebDriverFactory.closeAllDriver();
+		login.close_page();
+        //WebDriverFactory.closeAllDriver();
     }
-    */
+  
 }

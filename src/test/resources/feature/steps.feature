@@ -8,8 +8,7 @@ Feature: William Hill searching and login validation
     Then The Customer is directed to Login Window
 
 @tag1
-  Scenario: A William Hill Customer is able to see the LoginWindow containing
-  all elements
+  Scenario: A William Hill Customer is able to see the LoginWindow containing all elements
     Then The Customer is able to see logo
     And The Customer is able to see Close button
     And The Customer is able to see Join now button

@@ -9,14 +9,15 @@ public class HomePage extends StartPage {
 		super(driver);
 	}
 
-	private By magnifier = By.cssSelector(".btn-search-magnifier");
+	private By magnifier = By.xpath("//button[@data-ng-click = 'showSearchInput()']");
 	
 	private By searchField = By.cssSelector(".search-input__input-wrapper input");
 	
 	private String game_name = "Mayfair Roulette";
 
 	public SearchPage clickAndSearch() {
-		driver.findElement(magnifier).click();
+		
+		driver.findElement(magnifier).click();;
 		driver.findElement(searchField).sendKeys(game_name);
 		return new SearchPage(driver);
 	}

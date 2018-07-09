@@ -14,7 +14,7 @@ import com.paulhammant.ngwebdriver.*;
 
 public class WebDriverFactory {
 	private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
-	//private static NgWebDriver ngDriver;
+	private static NgWebDriver ngDriver;
 
 	/*
 	 * Factory method for getting browsers
@@ -31,9 +31,9 @@ public class WebDriverFactory {
 						"D:\\Selenium\\geckodriver-v0.20.1-win64\\geckodriver.exe");
 				driver = new FirefoxDriver();
 				driver.manage().window().maximize();
-			//	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			//	ngDriver = new NgWebDriver((JavascriptExecutor) driver);
-			//	ngDriver.waitForAngularRequestsToFinish();
+				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				ngDriver = new NgWebDriver((JavascriptExecutor) driver);
+				ngDriver.waitForAngularRequestsToFinish();
 				drivers.put("Firefox", driver);
 			}
 			break;

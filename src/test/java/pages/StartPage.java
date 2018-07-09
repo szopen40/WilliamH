@@ -1,14 +1,12 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.WebDriverFactory;
 
 public class StartPage extends WebDriverFactory {
 	
-	public WebDriver driver;
-	//WebDriver driver = WebDriverFactory.getBrowser("Firefox");
+	protected WebDriver driver;
 //	WebDriverWait wait = new WebDriverWait(driver, 5);
 	
 	public StartPage(WebDriver driver) {

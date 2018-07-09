@@ -2,15 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends StartPage {
+public class LoginPage extends SearchPage {
+
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
-		PageFactory.initElements(driver, this);
 	}
 
 	private By username_field = By.id("login-form-username");
@@ -108,6 +105,13 @@ public class LoginPage extends StartPage {
 		} else
 			return false;
 	}
+	public boolean loginButtonDisplayed() {
+		if (driver.findElement(log_button).isDisplayed()) {
+			return true;
+		} else
+			return false;
+	}
+	
 
 	// Additional
 	public boolean loginButtonVerification() {
