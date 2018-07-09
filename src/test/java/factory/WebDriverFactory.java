@@ -29,9 +29,8 @@ public class WebDriverFactory {
 		case "Firefox":
 			driver = drivers.get("Firefox");
 			if (driver == null) {
-				System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
-				System.setProperty("webdriver.gecko.driver",
-						"D:\\Selenium\\geckodriver-v0.20.1-win64\\geckodriver.exe");
+				System.setProperty("webdriver.firefox.bin", ConfigReader.readProperties("firefoxPath"));
+				System.setProperty("webdriver.gecko.driver", ConfigReader.readProperties("geckoPath"));
 				driver = new FirefoxDriver();
 				driver.manage().window().maximize();
 				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -51,7 +50,7 @@ public class WebDriverFactory {
 			}
 			break;
 		case "Chrome":
-			System.setProperty("webdriver.chrome.driver", ConfigReader.getChromePath());
+			System.setProperty("webdriver.chrome.driver", ConfigReader.readProperties("chromePath"));
 			driver = drivers.get("Chrome");
 			if (driver == null) {
 				driver = new ChromeDriver();
