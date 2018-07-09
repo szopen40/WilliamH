@@ -6,10 +6,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import factory.WebDriverFactory;
 
 public class StartPage extends WebDriverFactory {
-
-	WebDriver driver = WebDriverFactory.getBrowser("Chrome");
-	public WebDriverWait wait = new WebDriverWait(driver, 5);
-
+	
+	public WebDriver driver;
+	//WebDriver driver = WebDriverFactory.getBrowser("Firefox");
+//	WebDriverWait wait = new WebDriverWait(driver, 5);
+	
 	public StartPage(WebDriver driver) {
 		this.driver = driver;
 	}

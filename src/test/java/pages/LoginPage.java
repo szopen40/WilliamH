@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,69 +13,54 @@ public class LoginPage extends StartPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(id = "login-form-username")
-	private WebElement username_field;
+	private By username_field = By.id("login-form-username");
 
-	@FindBy(xpath = "//label[contains(text(), 'Username')]")
-	private WebElement username_title;
+	private By username_title = By.xpath("//label[contains(text(), 'Username')]");
+	
+	private By password_field = By.id("login-form-password");
 
-	@FindBy(id = "login-form-password")
-	private WebElement password_field;
+	private By password_title = By.xpath("//label[contains(text(), 'Password')]");
+	
+	private By log_button = By.xpath("//*[contains(text(), 'Log in')]");
+	
+	private By join_now = By.cssSelector(".c-login-form__register-link");
+	
+	private By remember_user = By.cssSelector( "#rememberUsername");
 
-	@FindBy(xpath = "//label[contains(text(), 'Password')]")
-	private WebElement password_title;
+	private By save_username = By.xpath("//label[contains(text(), 'Save username')]");
+	
+	private By forgot_details = By.xpath("//span[contains(text(), 'Forgot details')]");
 
-	@FindBy(xpath = "//*[contains(text(), 'Log in')]")
-	private WebElement log_button;
+	private By logo = By.cssSelector( ".l-login-component__logo");
+	
+	private By account_yet = By.xpath("//span[@class = 'c-login-form__register-text' and contains(text(),'have an account yet')]");
+	
+	private By button_hide = By.xpath("//span[@class = 'c-login-form__toggle-password' and contains(text(),'Hide')]");
 
-	@FindBy(css = ".c-login-form__register-link")
-	private WebElement join_now;
+	private By button_show = By.xpath("//span[@class = 'c-login-form__toggle-password' and contains(text(),'Show')]");
 
-	@FindBy(css = "#rememberUsername")
-	private WebElement remember_user;
-
-	@FindBy(xpath = "//label[contains(text(), 'Save username')]")
-	private WebElement save_username;
-
-	@FindBy(xpath = "//span[contains(text(), 'Forgot details')]")
-	private WebElement forgot_details;
-
-	@FindBy(css = ".l-login-component__logo")
-	private WebElement logo;
-
-	@FindBy(xpath = "//span[@class = 'c-login-form__register-text' and contains(text(),'have an account yet')]")
-	private WebElement account_yet;
-
-	@FindBy(xpath = "//span[@class = 'c-login-form__toggle-password' and contains(text(),'Hide')]")
-	private WebElement button_hide;
-
-	@FindBy(xpath = "//span[@class = 'c-login-form__toggle-password' and contains(text(),'Show')]")
-	private WebElement button_show;
-
-	@FindBy(css = ".login-component__wrapper")
-	private WebElement login_window;
-
-	@FindBy(xpath = "//span[text() = 'Close']")
-	private WebElement close_button;
+	private By login_window = By.cssSelector(".login-component__wrapper");
+	
+	private By close_button = By.xpath("//span[text() = 'Close']");
 
 	public boolean usernameEnabled() {
-		if (username_field.isEnabled() && username_title.isDisplayed()) {
+		if (driver.findElement(username_field).isEnabled() && driver.findElement(username_title).isDisplayed()) {
 			return true;
 		} else
 			return false;
 	}
 
 	public boolean passwordEnabled() {
-		if (password_field.isEnabled() && password_title.isDisplayed()) {
+		if (driver.findElement(password_field).isEnabled() && driver.findElement(password_title).isDisplayed()) {
 			return true;
 		} else
 			return false;
 	}
 
 	public boolean hideAndShowEnabled() {
-		if (button_show.isDisplayed()) {
-			button_show.click();
-			if (button_hide.isDisplayed()) {
+		if (driver.findElement(button_show).isDisplayed()) {
+			driver.findElement(button_show).click();
+			if (driver.findElement(button_hide).isDisplayed()) {
 				return true;
 			} else
 				return false;
@@ -83,41 +69,41 @@ public class LoginPage extends StartPage {
 	}
 
 	public boolean loginWindowEnabled() {
-		if (login_window.isDisplayed()) {
+		if (driver.findElement(login_window).isDisplayed()) {
 			return true;
 		} else
 			return false;
 	}
 
 	public boolean logoEnabled() {
-		if (logo.isDisplayed()) {
+		if (driver.findElement(logo).isDisplayed()) {
 			return true;
 		} else
 			return false;
 	}
 
 	public boolean forgotEnabled() {
-		if (forgot_details.isDisplayed()) {
+		if (driver.findElement(forgot_details).isDisplayed()) {
 			return true;
 		} else
 			return false;
 	}
 
 	public boolean checkboxEnabled() {
-		if (remember_user.isEnabled() && save_username.isDisplayed()) {
+		if (driver.findElement(remember_user).isEnabled() && driver.findElement(save_username).isDisplayed()) {
 			return true;
 		} else
 			return false;
 	}
 
 	public boolean joinEnabled() {
-		if (join_now.isEnabled()) {
+		if (driver.findElement(join_now).isEnabled()) {
 			return true;
 		} else
 			return false;
 	}
 	public boolean closeEnabled() {
-		if (close_button.isDisplayed()) {
+		if (driver.findElement(close_button).isDisplayed()) {
 			return true;
 		} else
 			return false;
@@ -125,10 +111,10 @@ public class LoginPage extends StartPage {
 
 	// Additional
 	public boolean loginButtonVerification() {
-		if (log_button.isDisplayed() && !(log_button.isEnabled())) {
-			username_field.sendKeys("someuser");
-			password_field.sendKeys("somepassword");
-			if (log_button.isEnabled()) {
+		if (driver.findElement(log_button).isDisplayed() && !(driver.findElement(log_button).isEnabled())) {
+			driver.findElement(username_field).sendKeys("someuser");
+			driver.findElement(password_field).sendKeys("somepassword");
+			if (driver.findElement(log_button).isEnabled()) {
 				return true;
 			}
 			return false;

@@ -4,14 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import com.paulhammant.ngwebdriver.*;
 
 public class WebDriverFactory {
 	private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
+	//private static NgWebDriver ngDriver;
 
 	/*
 	 * Factory method for getting browsers
@@ -25,10 +28,12 @@ public class WebDriverFactory {
 			if (driver == null) {
 				System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
 				System.setProperty("webdriver.gecko.driver",
-						"D:\\Selenium\\geckodriver.exe");
+						"D:\\Selenium\\geckodriver-v0.20.1-win64\\geckodriver.exe");
 				driver = new FirefoxDriver();
 				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			//	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+			//	ngDriver = new NgWebDriver((JavascriptExecutor) driver);
+			//	ngDriver.waitForAngularRequestsToFinish();
 				drivers.put("Firefox", driver);
 			}
 			break;
@@ -37,16 +42,20 @@ public class WebDriverFactory {
 			if (driver == null) {
 				System.setProperty("webdriver.ie.driver", "C:\\Users\\abc\\Desktop\\Server\\IEDriverServer.exe");
 				driver = new InternetExplorerDriver();
+				//ngDriver = new NgWebDriver((JavascriptExecutor) driver);
+				//ngDriver.waitForAngularRequestsToFinish();
 				drivers.put("IE", driver);
 			}
 			break;
 		case "Chrome":
-			System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver1_win32\\chromedriver.exe");
 			driver = drivers.get("Chrome");
 			if (driver == null) {
 				driver = new ChromeDriver();
 				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				//ngDriver = new NgWebDriver((JavascriptExecutor) driver);
+				//ngDriver.waitForAngularRequestsToFinish();
 				drivers.put("Chrome", driver);
 			}
 			break;
@@ -64,6 +73,8 @@ public class WebDriverFactory {
 			ChromeOptions chromeOptions = new ChromeOptions();
 			chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
 			driver = new ChromeDriver(chromeOptions);
+			//ngDriver = new NgWebDriver((JavascriptExecutor) driver);
+			//ngDriver.waitForAngularRequestsToFinish();
 		}
 		return driver;
 	}

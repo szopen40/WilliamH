@@ -10,36 +10,38 @@ import cucumber.api.java.en.When;
 import factory.WebDriverFactory;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SearchPage;
 import pages.StartPage;
 
 public class StepDefinition {
 
 	StartPage start_page;
 	HomePage home_page;
+	SearchPage search_page;
 	LoginPage login;
 
 	@Test
 	@Given("^Navigate to webpage$")
 	public void navigate_to_webpage() throws Throwable {
-		home_page = new HomePage(WebDriverFactory.getBrowser("Chrome"));
+		home_page = new HomePage(WebDriverFactory.getBrowser("Firefox"));
 		home_page.goToHomePage();
 
 	}
 
 	@When("^The Customer clicks on magnifier button and search for Mayfair Roulette$")
 	public void the_Customer_clicks_on_magnifier_button_and_search_for_Mayfair_Roulette() {
-		home_page.clickAndSearch();
+		search_page  = home_page.clickAndSearch();
 	}
 
 	@When("^Clicks on More button followin hover over Mayfair Roulette tile$")
 	public void clicks_on_More_button_followin_hover_over_Mayfair_Roulette_tile() {
-		home_page.playTheGame();
+		search_page.playTheGame();
 
 	}
 
 	@When("^The Customer clicks on Play Now$")
 	public void the_Customer_clicks_on_Play_Now() {
-		login = home_page.clickPlay();
+		login = search_page.clickPlay();
 	}
 
 	@Then("^The Customer is directed to Login Window$")
