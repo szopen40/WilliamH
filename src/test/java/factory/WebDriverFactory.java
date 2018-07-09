@@ -17,11 +17,7 @@ import utility.ConfigReader;
 public class WebDriverFactory {
 	private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 	private static NgWebDriver ngDriver;
-	ConfigReader config = new ConfigReader();
 
-	/*
-	 * Factory method for getting browsers
-	 */
 	public static WebDriver getBrowser(String browserName) {
 		WebDriver driver = null;
 
