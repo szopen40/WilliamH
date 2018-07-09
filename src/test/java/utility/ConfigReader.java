@@ -1,14 +1,9 @@
 package utility;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import gherkin.deps.net.iharder.Base64.OutputStream;
 
 public class ConfigReader {
 
@@ -19,7 +14,7 @@ public class ConfigReader {
 		try {
 			InputStream input = new FileInputStream(file);
 			prop.load(input);
-			System.out.println(prop.getProperty("chromePath"));
+			input.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -29,6 +24,7 @@ public class ConfigReader {
 		}
 		if(name == "geckoPath"){
 			String geckoPath = prop.getProperty("geckoPath");
+			
 			return geckoPath;
 		}
 		
